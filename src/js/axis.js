@@ -12,10 +12,10 @@ class Axis {
   }
   /**
    * add canvas node
-   * @param {Object} attrObj 
-   * @param {Object} cssObj 
+   * @param {Object} [attrObj] 
+   * @param {Object} [cssObj] 
    */
-  addCanvas(attrObj, cssObj) {
+  addCanvas(attrObj = {}, cssObj = {}) {
     let child = document.createElement('canvas');
     for (var attr in attrObj) {
       child.setAttribute(attr, attrObj[attr]);
@@ -29,10 +29,10 @@ class Axis {
   /**
    * add div node according to thing
    * @param {Object} thing the thing object
-   * @param {Object} attrObj the element's attribute object
-   * @param {Object} cssObj the element's css object
+   * @param {Object} [attrObj] the element's attribute object
+   * @param {Object} [cssObj] the element's css object
    */
-  addDescDiv(thing, attrObj, cssObj) {
+  addDescDiv(thing, attrObj = {}, cssObj = {}) {
     let child = document.createElement('div');
     let
       childChild = null,

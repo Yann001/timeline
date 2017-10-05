@@ -18,8 +18,8 @@ class Canvas {
    * @param {Nmuber} x X-axis
    * @param {Nmuber} y Y-axis
    * @param {Nmuber} radius radius
-   * @param {Boolean} isFill fill color or not
-   * @param {String} color the color string by hex
+   * @param {Boolean} [isFill] fill color or not
+   * @param {String} [color] the color string by hex
    */
   drawCycle(x, y, radius, isFill = false, color = '#000000') {
     let ctx = this.ctx;
@@ -37,9 +37,9 @@ class Canvas {
    * draw allow
    * @param {Number} radius the cycle's radius
    * @param {Number} base the base length of triangle
-   * @param {Boolean} isLeft the direction of allow is left or not
-   * @param {Boolean} isFill fill color or not
-   * @param {String} color the color string by hex
+   * @param {Boolean} [isLeft] the direction of allow is left or not
+   * @param {Boolean} [isFill] fill color or not
+   * @param {String} [color] the color string by hex
    */
   drawAllow(radius, base, isLeft = true, isFill = false, color = '#000000') {
     let ctx = this.ctx;
