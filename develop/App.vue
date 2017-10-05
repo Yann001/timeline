@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Timeline from '~/src/js/timeline';
+import Timeline from '@/src/js/timeline';
 export default {
   name: 'app',
   data () {
