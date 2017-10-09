@@ -22,18 +22,18 @@ class TagFactory {
       throw new Error('the tagName is not supported');
     }
     let node = document.createElement(tagName);
-    for (var attr in attrObj) {
+    for (let attr in attrObj) {
       node.setAttribute(attr, attrObj[attr]);
     }
-    for (var css in cssObj) {
+    for (let css in cssObj) {
       node.style[css] = cssObj[css];
     }
     return node;
   }
   /**
    * create tag and return tag, tag's width and height
-   * @param {*} tagName the tag name
-   * @param {*} text the tag text
+   * @param {String} tagName the tag name
+   * @param {String} text the tag text
    * @param {Object} [attrObj] the tag's attribute object
    * @param {Object} [cssObj] the tag's css object
    * @return {Object} node, width and height

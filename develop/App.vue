@@ -1,12 +1,15 @@
 <template>
   <div id="app">
-    <div class="axis" id="axis"></div>
+    <canvas id="single"></canvas>
+    <canvas id="muti"></canvas>
+    <!-- <div class="axis" id="axis"></div> -->
   </div>
 </template>
 
 <script>
-import TagFactory from '@/src/js/tag-factory';
 // import Timeline from '@/src/js/timeline';
+// import TagFactory from '@/src/js/tag-factory';
+import TextTag from '@/src/implement/TextTag';
 export default {
   name: 'app',
   data () {
@@ -14,97 +17,103 @@ export default {
   },
   mounted () {
     let box = document.querySelector('#app');
-    let data = [
-      {
-        type: 'div',
-        text: '测试较少文字',
-        attr: {
-          id: 'div-id',
-          class: 'div-class'
-        },
-        css: {
-          color: 'red',
-          fontSize: '20px',
-          border: '1px solid red'
-        }
-      },
-      {
-        type: 'a',
-        text: 'a标签',
-        attr: {
-          id: 'a-id',
-          class: 'a-class',
-          href: 'https://github.com/930team/timeline'
-        },
-        css: {
-          border: '1px solid black'
-        }
-      },
-      {
-        type: 'div',
-        text: '测试较多文字，测试较多文字，测试较多文字，测试较多文字，测试较多文字，测试较多文字，测试较多文字，测试较多文字，测试较多文字',
-        attr: {},
-        css: {
-          color: 'blue',
-          border: '1px solid blue',
-          borderRadius: '5px'
-        }
-      },
-      {
-        type: 'img',
-        text: '',
-        attr: {
-          class: 'img-class',
-          // what should I use statics images?
-          // src: '@/develop/assets/logo.png',
-          src: 'https://s1.ax1x.com/2017/10/03/15SdP.jpg',
-          alt: '测试图片',
-          title: '测试图片自定义图片大小'
-        },
-        css: {
-          width: '200px',
-          height: '200px',
-          borderRadius: '5px'
-        }
-      },
-      {
-        type: 'img',
-        text: '',
-        attr: {
-          class: 'img-class',
-          // src: '@/develop/assets/logo.png',
-          src: 'https://s1.ax1x.com/2017/10/03/15SdP.jpg',
-          alt: '测试图片',
-          title: '测试图片使用组件默认图片大小（120*90）'
-        },
-        css: {}
-      },
-      {
-        type: 'div',
-        text: `测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，
-               测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，
-               测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，
-               测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，
-               测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，
-               测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，
-               测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，
-               测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，
-               测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字。`,
-        attr: {},
-        css: {
-          color: 'blue',
-          border: '1px solid blue',
-          borderRadius: '5px'
-        }
-      }
-    ]
-    let tf = new TagFactory();
-    data.forEach((i) => {
-      let res = tf.getTagDetail(i.type, i.text, i.attr, i.css);
-      box.appendChild(res.node);
-      console.log(res.node.tagName + ' node width: ' + res.width);
-      console.log(res.node.tagName + ' node height: ' + res.height);
-    });
+    let can1 = document.querySelector('#single');
+    let can2 = document.querySelector('#muti');
+    let textTag1 = new TextTag('测试单行文本');
+    textTag1.create('single', can1);
+    let textTag2 = new TextTag('测试多行文本，测试多行文本，测试多行文本，测试多行文本，测试多行文本，测试多行文本，测试多行文本。');
+    textTag2.create('muti', can2);
+    // let data = [
+    //   {
+    //     type: 'div',
+    //     text: '测试较少文字',
+    //     attr: {
+    //       id: 'div-id',
+    //       class: 'div-class'
+    //     },
+    //     css: {
+    //       color: 'red',
+    //       fontSize: '20px',
+    //       border: '1px solid red'
+    //     }
+    //   },
+    //   {
+    //     type: 'a',
+    //     text: 'a标签',
+    //     attr: {
+    //       id: 'a-id',
+    //       class: 'a-class',
+    //       href: 'https://github.com/930team/timeline'
+    //     },
+    //     css: {
+    //       border: '1px solid black'
+    //     }
+    //   },
+    //   {
+    //     type: 'div',
+    //     text: '测试较多文字，测试较多文字，测试较多文字，测试较多文字，测试较多文字，测试较多文字，测试较多文字，测试较多文字，测试较多文字',
+    //     attr: {},
+    //     css: {
+    //       color: 'blue',
+    //       border: '1px solid blue',
+    //       borderRadius: '5px'
+    //     }
+    //   },
+    //   {
+    //     type: 'img',
+    //     text: '',
+    //     attr: {
+    //       class: 'img-class',
+    //       // what should I use statics images?
+    //       // src: '@/develop/assets/logo.png',
+    //       src: 'https://s1.ax1x.com/2017/10/03/15SdP.jpg',
+    //       alt: '测试图片',
+    //       title: '测试图片自定义图片大小'
+    //     },
+    //     css: {
+    //       width: '200px',
+    //       height: '200px',
+    //       borderRadius: '5px'
+    //     }
+    //   },
+    //   {
+    //     type: 'img',
+    //     text: '',
+    //     attr: {
+    //       class: 'img-class',
+    //       // src: '@/develop/assets/logo.png',
+    //       src: 'https://s1.ax1x.com/2017/10/03/15SdP.jpg',
+    //       alt: '测试图片',
+    //       title: '测试图片使用组件默认图片大小（120*90）'
+    //     },
+    //     css: {}
+    //   },
+    //   {
+    //     type: 'div',
+    //     text: `测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，
+    //            测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，
+    //            测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，
+    //            测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，
+    //            测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，
+    //            测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，
+    //            测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，
+    //            测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，
+    //            测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字，测试超级多文字。`,
+    //     attr: {},
+    //     css: {
+    //       color: 'blue',
+    //       border: '1px solid blue',
+    //       borderRadius: '5px'
+    //     }
+    //   }
+    // ]
+    // let tf = new TagFactory();
+    // data.forEach((i) => {
+    //   let res = tf.getTagDetail(i.type, i.text, i.attr, i.css);
+    //   box.appendChild(res.node);
+    //   console.log(res.node.tagName + ' node width: ' + res.width);
+    //   console.log(res.node.tagName + ' node height: ' + res.height);
+    // });
 
     // let things = [
     //   {
